@@ -1,0 +1,16 @@
+section{
+    display: flex;
+}
+article{
+    height:100vh;
+    flex: 7;
+    text-align:center;
+    color: #000;
+}
+nav{
+    height:100vh;
+    flex: 2;
+    text-align:center;
+    color: #fff;
+    background-color:rgb(41, 41, 197);
+}
