@@ -6,19 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="item">A</div>
-        <div class="item">login</div>
-        <div class="item">C</div>
-        <div class="item">D</div>
+        <div class="item">
+            <img src="./image/logo.jpg" alt="logo" width="200" height="120">
+        </div>
+        <div class="item"><b>login</b></div>
+        <div class="item">
+            <form action="-">
+                <input id="search" type="text"/>
+                <input type="button" value="search"/>
+            </form>
+        </div>
+        <div class="item">      
+            <form action="">
+            <label style="font-size:30px; color:#fff;">
+                &nbsp;&nbsp;&nbsp; ID: 
+            </label>
+            <input style="height:25px; width:200;" id="passworld" type="text"/>
+            <input style="height:30px; width:60;" type="button" value="login"/>
+            </form>
+        </div>
         <div class="item">E</div>
         <div class="item">
-            <ul><li>우리 학교 둘러보기</li></ul>
+            <p style="font-size:30px;"><br>
+                &nbsp;&nbsp;우리 학교 둘러보기
+            <p>
+                <form style="height:30px; width:150;" action="">
+                    <label style="font-size:20px; color:#fff;">
+                        &nbsp;&nbsp;학교 이름: 
+                    </label>
+                    <input id="schoolname" type="text"/>
+                    <input type="button" value="search"/>
+                </form>
+                <p>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="https://www.cau.ac.kr/index.do">중앙대학교</a><br>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="https://www.khu.ac.kr/kor/main/index.do">경희대학교</a><br>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="http://www.konkuk.ac.kr/do/Index.do">건국대학교</a><br>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="https://www.snu.ac.kr/ipsi2265912.html">서울대학교</a><br>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="https://www.korea.ac.kr/mbshome/mbs/university/index.do">고려대학교</a><br>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="https://www.dongguk.edu/main">동국대학교</a><br>
+                    &nbsp;&nbsp;&nbsp;<a style="color:#fff;" href="-">...</a>
+                </p>
+            </div>
         </div>
     </div>
 </body>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>">
 </html>
