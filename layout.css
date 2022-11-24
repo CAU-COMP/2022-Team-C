@@ -1,16 +1,25 @@
-section{
-    display: flex;
+.container{
+    display:grid;
+    grid-template-columns: calc(100vw - 450px) 450px ;
+    grid-template-rows: 150px 40px calc(100vh - 190px);
 }
-article{
-    height:100vh;
-    flex: 7;
-    text-align:center;
-    color: #000;
+
+.item:nth-child(2n){
+    background-color: rgb(21, 74, 153);
 }
-nav{
-    height:100vh;
-    flex: 2;
-    text-align:center;
+.item:nth-child(2n-1){
+    background-color: #fff;
+}
+.item:nth-child(2){
     color: #fff;
-    background-color:rgb(41, 41, 197);
+    text-align:center;
+    padding: 45px 0;
+    font-size: 50px;
 }
+.item:nth-child(6){
+    color: #fff;
+    text-align:left;
+    padding: 20px 0;
+    font-size: 25px;
+}
+
