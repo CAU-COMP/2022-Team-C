@@ -1,4 +1,4 @@
-<!--From "https://bootsnipp.com/snippets/dldxB"-->
+<!--From "https://bootsnipp.com/snippets/dldxB" -> modify -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,8 +6,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>필드 : 로그인</title>
-        <link rel="stylesheet" href="./sign/signIn.css" id="bootstrap-css">
+        <title>필드 : 회원가입</title>
+        <link rel="stylesheet" href="./sign/signUp.css" id="bootstrap-css">
     </head>
     <body>
         <div class="wrapper fadeInDown">
@@ -16,17 +16,16 @@
               <img src="./sign/image/logo.jpg" id="icon" alt="logo" width="50"/>
 
           
-              <!-- Login Form -->
-              <form action="/signIn" method="POST">
+              <!-- Sign up Form -->
+              <form action="/signUp" method="POST">
                 <input type="text" id="id" name="id" placeholder="ID">
                 <input type="password" id="password" name="pw" placeholder="PASSWORD" className="input-pw" autocomplete="current-password">
-                <input type="submit" value="Login">
+                <input type="text" id="email" name="email" placeholder="EMAIL">
+                <input type="text" id="name" name="name" placeholder="NICKNAME">
+                <input type="text" id="dept" name="dept" placeholder="DEPARTMENT NAME">
+                <input type="submit" value="Sign Up">
               </form>
-              
-              <!-- sign up -->
-              <div id="formFooter">
-                <a href="/signUp">Sign Up</a>
-              </div>
+
             </div>
           </div>
     </body>

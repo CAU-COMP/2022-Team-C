@@ -11,5 +11,30 @@ module.exports = function(app){
         res.render("member_main/main.html");
     });
 
-    app.get("/signin", user.signIn);
+      
+    app.get("/signUp", function(req, res){
+        res.render("sign/signUp.html");
+    });
+    app.post("/signUp", user.signUp);
+
+    app.get("/signIn", function(req, res){
+        res.render("sign/signIn.html");
+    });
+    app.post("/signIn", user.signIn);
+ 
+
+    app.get("/main/:userId", user.getMain);
+
+
+    app.get("/notes/:noteId", user.getNote);
+    app.patch("/notes/:noteId", user.hitsUp);               // 조회수 + 1
+
+    
+
+    
+    
+    
+    
+    //app.get("/note/upload", user.uploadNote);
+    
 }
