@@ -12,8 +12,7 @@ exports.getNote = async function(req, res){
     console.log(reviewByNoteId);
 
     return res.render("notes/main.html");
-    // return res.render("notes/main.html", {'result': mainByUserId});
-    // res.render("member_main/main.html", {'result': mainByUserId});       // ejs로 바꾸기 
+    // return res.render("notes/main.html", {'result': mainByUserId});      // ejs로 바꾸기 
 }
 
 exports.hitsUp = async function(req, res){
@@ -45,8 +44,8 @@ exports.signUp = async function (req, res) {
         id, pw, email, name, dept
     );
 
-    return res.redirect("/test");
-    //res.redirect("/test", {result : signUpService});
+    return res.redirect("/main");
+    //res.redirect("/main", {result : signUpService});
 };
 
 exports.signIn = async function(req, res){
@@ -60,9 +59,9 @@ exports.signIn = async function(req, res){
     if(!signInService[0])           // 로그인 실패
         return res.redirect("/signIn"); 
     if(signInService[0].id == id)      // 로그인 성공
-        return res.redirect("/test");
+        return res.redirect("/main");
 
-    //res.redirect("/test", {result : signInService});
+    //res.redirect("/main", {result : signInService});
 }
 
 /*
