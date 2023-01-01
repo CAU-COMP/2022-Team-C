@@ -1,26 +1,94 @@
 .container{
     display:grid;
-    grid-template-columns: calc(100vw - 180px) 120px 60px ;
-    grid-template-rows: 50px calc(100vh - 50px);
+    grid-template-columns: calc(100vw - 300px) 200px 100px ;
+    grid-template-rows: 50px 80px calc(100vh - 130px);
 }
-.item:nth-child(2n){
-}
-.item:nth-child(2n-1){
-}
+
 .item:nth-child(1){
 background-color: rgb(21, 74, 153);
 padding: 15px;
 text-align:center;
+display: flex;
 }
+
 .item:nth-child(2){
-background-color: rgb(21, 74, 153)
+    background-color: rgb(21, 74, 153);
 }
+
 .item:nth-child(3){
-background-color: rgb(21, 74, 153)
+    background-color: rgb(21, 74, 153);
+    padding: 12px;
+    display: flex;
+    text-align:center;
 }
-.item:nth-child(5){
-    grid-column: 2;
-    grid-row-start: 2;
-    grid-row-start: 3;
-    background-color: #000;
-    }
+
+.item:nth-child(4){
+    padding: 50px;
+    text-align: bottom;
+    font-size:25px;
+}
+
+.item:nth-child(7){
+    display:grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 190px 190px 190px;    
+    gap: 70px 40px;
+    position: absolute;
+    top: 57%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+}
+
+.item:nth-child(9){
+    text-align: center;
+}   
+
+
+input[id="menuicon"] {
+    display:none;
+    z-index:1;
+}
+input[id="menuicon"] + label {
+    display:block;
+    width:40px;
+    height:25px;
+    position:relative;
+    cursor:pointer;
+}
+input[id="menuicon"] + label span {
+    display:block;
+    position:absolute;
+    width:100%;
+    height:5px;
+    border-radius:30px;
+    background:white;
+    transition: all.35s;
+}
+input[id="menuicon"] + label span:nth-child(1) {
+    top: 0;
+}
+input[id="menuicon"] + label span:nth-child(2) {
+    top:50%;
+    transform:translateY(-50%);
+}
+input[id="menuicon"] + label span:nth-child(3) {
+    bottom:0;
+}
+input[id="menuicon"]:checked + label span:nth-child(1) {
+    top:50%;
+    transform:translateY(-50%) rotate(45deg);
+}
+input[id="menuicon"]:checked + label span:nth-child(2) {
+    opacity:0;
+}
+input[id="menuicon"]:checked + label span:nth-child(3) {
+    bottom:50%;
+    transform:translateY(50%) rotate(-45deg);
+}
+div[class="sidebar"] {
+    width:300px; height:100%; background:white; position:fixed; top:58px; right:-300px; transition:all;
+}
+    
+input[id="menuicon"]:checked + label + div {
+    right:0;
+}

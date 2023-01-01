@@ -11,6 +11,8 @@ exports.getNote = async function(req, res){
     console.log(noteByNoteId);
     console.log(reviewByNoteId);
 
+    return res.render("notes/main.html");
+    // return res.render("notes/main.html", {'result': mainByUserId});
     // res.render("member_main/main.html", {'result': mainByUserId});       // ejs로 바꾸기 
 }
 

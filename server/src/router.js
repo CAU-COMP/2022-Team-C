@@ -7,7 +7,7 @@ module.exports = function(app){
         res.render("main/main.html");
     });
 
-    app.get("/test", function(req, res){
+    app.get("/main", function(req, res){
         res.render("member_main/main.html");
     });
 
@@ -21,20 +21,31 @@ module.exports = function(app){
         res.render("sign/signIn.html");
     });
     app.post("/signIn", user.signIn);
- 
+
+
+
+    
+    app.get("/field", function(req, res){
+        res.render("upload/main.html");
+    });
+
+    app.get("/note/", function(req, res){
+        res.render("notes/main.html");
+    });
+
+
+
+
+
 
     app.get("/main/:userId", user.getMain);
 
-
-    app.get("/notes/:noteId", user.getNote);
-    app.patch("/notes/:noteId", user.hitsUp);               // 조회수 + 1
-
-    
+    //app.get("/notes/:noteId", user.getNote);
+    //app.patch("/notes/:noteId", user.hitsUp);               // 조회수 + 1
 
     
     
     
     
-    //app.get("/note/upload", user.uploadNote);
     
 }

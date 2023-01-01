@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필드 : 필기 업로드</title>
+    <link rel="stylesheet" href="./upload/layout.css">
+    <link rel="stylesheet" href="./upload/style.css">
+    <link rel="stylesheet" href="./upload/box.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item">&nbsp&nbsp<a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text"/></div>
+        <div class="item"> <input id="search_button" type="button" value="search"/> </div>
+        <div class="item"> COMP1234 님 &nbsp;&nbsp;<img src="./member_main/image/menu.png" alt="menu" width="30" height="25"> </div>
+        <div class="item"> </div>
+        <div class="item"> 
+            <h3>작성강의 선택</h3>&nbsp;&nbsp;&nbsp;
+            <input id="search_lecture_space" type="text" list="searchLecture"/>
+        <datalist id="searchLecture">
+            <option value="재무관리"/>
+            <option value="운영관리"/>
+            <option value="객체지향프로그래밍"/>
+            <option value="컴퓨터구조"/>
+            <option value="ACT"/>
+            <option value="프로그래밍언어론"/>
+        </datalist> 
+        </div>
+        <div class="item">
+            <div id="big_box" >
+                <div id="btn_group">
+                    <button id="exam_btn1">중간</button>
+                    <button id="exam_btn2">기말</button>
+                    <button id="exam_btn3">과제</button>
+                </div>
+                <p id="upload_text"># 필기 파일 업로드</p>
+                <input type="file" name="file" id="file">
+                <p id="upload_text"># 설명 작성</p>
+                <input id="small_box" type="text"><br>
+                <p id="upload_text"># 필기 포인트 설정</p>
+                <div id="point_bnt_group">
+                    <input type='radio' id='onep' name='point'/>
+                    <label for='onep'>1</label>
+                    <input type='radio' id='fivep' name='point'/>
+                    <label for='fivep'>5</label>
+                    <input type='radio' id='tenp' name='point'/>
+                    <label for='tenp'>10</label>
+                    <input type='radio' id='fifteenp' name='point'/>
+                    <label for='fifteenp'>15</label>
+                </div>
+                <button id="submit_btn">필기 등록</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    </html>
