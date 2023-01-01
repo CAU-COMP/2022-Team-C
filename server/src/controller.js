@@ -44,7 +44,7 @@ exports.signUp = async function (req, res) {
         id, pw, email, name, dept
     );
 
-    return res.redirect("/main");
+    return res.redirect("/");
     //res.redirect("/main", {result : signUpService});
 };
 
@@ -59,7 +59,7 @@ exports.signIn = async function(req, res){
     if(!signInService[0])           // 로그인 실패
         return res.redirect("/signIn"); 
     if(signInService[0].id == id)      // 로그인 성공
-        return res.redirect("/main");
+        return res.redirect("/test");
 
     //res.redirect("/main", {result : signInService});
 }
