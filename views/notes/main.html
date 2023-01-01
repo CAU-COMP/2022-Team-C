@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필드 : 필기 열람</title>
+    <link rel="stylesheet" href="./notes/layout.css">
+    <link rel="stylesheet" href="./notes/style.css">
+    <link rel="stylesheet" href="./notes/box.css">
+    <link rel="stylesheet" href="./notes/space.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+        
+            <img src="./notes/image/plus.png" alt="plus" width="25" height="25">
+            &nbsp;&nbsp;
+                <form action="-">
+                <input id="search" type="text"/>
+            &nbsp;&nbsp;
+                <input id="search_button" type="button" value="search"/>
+            </form>
+        </div>
+        <div class="item">COMP1234 님 </div>
+        <div class="item">  <img src="./notes/image/menu.png" alt="menu" width="30" height="25"></div>
+        <div class="item" id="background" style="color:#004fff; font-weight:700;">&nbsp;&nbsp; COMP1234님의 ACT 필기 2023.01.01 </div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background">
+            <div id="box1"></div>
+            <div id="box2">aaaaa</div>
+        </div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background">
+            <div id="box3">
+                <div id="space1" style="color:#004fff">
+                    포인트: 1000P  &nbsp;&nbsp; <input id="get_button" type="button" value="열람하기"/> 
+                </div>
+                <div id="space2"></div>
+                <div id="space3">(리뷰) &nbsp;&nbsp; 평점: *****</div>
+                <div id="space4">
+                    <div id="review_box">한윤호님의 리뷰</div>   
+                    <div id="review_box">고민지님의 리뷰</div>   
+                    <div id="review_box">김명준님의 리뷰</div>   
+                </div>   
+            </div>
+        </div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background"></div>
+    </div>
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+</html>

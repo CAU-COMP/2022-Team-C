@@ -32,15 +32,24 @@
     background-color: rgb(230, 230, 230);
 }
 
-#field{
-    border: 2px solid black;
+#get_button{
+    width: 100px;
+    height: 38px;
     background-color: #fff;
-    border-radius: 50px;
-    height: 800px;
-    width: 600px;
-    position: absolute;
-    top: 60%;
-    left: 93%;
-    transform: translate(-50%, -50%);
-    padding: 40px;
+    border: 4px solid rgb(21, 74, 153);
+    color: rgb(21, 74, 153);
+    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#get_button:focus{
+outline: 0; 
+}
+
+#get_button:hover{
+background-color: #999999;
+cursor: pointer;
+box-shadow: 0 2px 4px rgba (0, 79, 255, 0.6);
 }
