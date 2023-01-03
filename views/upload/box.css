@@ -1,6 +1,6 @@
 #big_box{
-    width: 1000px;
-    height: 1100px;
+    width: 900px;
+    height: 1300px;
     font-size: 20px;
     border: 4px solid rgb(21, 74, 153);
     border-radius: 30px;
@@ -9,16 +9,24 @@
     background-color: white;
 }
 
+#write_space{
+    display: flex;
+    justify-content: center;
+}
 #small_box{
-    width: 870px;
-    height: 300px;
+    resize: none;
+    width: 80%;
+    height: 200px;
     font-size: 20px;
-    border: 4px solid rgb(204, 204, 204);
-    border-radius: 30px;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 10px;
     outline: none;
     padding-left: 10px;
     background-color: white;
     margin-top: 5px; 
-    margin-left : 50px;
     text-align:initial;
+}
+
+#sub_info_box{
+    margin-left: 50px;
 }

@@ -1,0 +1,47 @@
+#search_box{
+    margin-top: 70px;
+    height: 100px; 
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#side_box{
+    width: 700px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+#login_box{
+    display: inline-flex;
+    width: 600px;
+    height: 200px;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#school_search_box{
+    width: 600px;
+    height: 80px;
+    border-radius: 20px;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+}
+
+#school_name_box{
+    margin-left: 80px;
+    width: 600px;
+    height: 500px;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: start;
+}

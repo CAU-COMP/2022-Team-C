@@ -2,14 +2,13 @@
 const { pool } = require("../config/database");
 const dao = require("./dao");
 
-
-exports.retrieveMain = async function (userId){
+exports.retrieveCourse = async function (){
     const connection = await pool.getConnection(async (conn) => conn);
-    const userMain = await dao.selectMain(connection, userId);
+    const course = await dao.selectCourse(connection);
   
     connection.release();
   
-    return userMain;
+    return course;
 }
 
 exports.retrieveNote = async function(noteId){
@@ -21,6 +20,25 @@ exports.retrieveNote = async function(noteId){
     return noteInfo;
 }
 
+exports.retrieveNewNote = async function(userId){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const newNoteInfo = await dao.selectNewNote(connection, userId);
+
+    connection.release();
+
+    return newNoteInfo;
+}
+
+exports.retrievepopularNote = async function(){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const popularNoteInfo = await dao.selectPopularNote(connection);
+    
+    connection.release();
+
+    return popularNoteInfo;
+}
+
+
 exports.retrieveReview = async function(noteId){
     const connection = await pool.getConnection(async (conn) => conn);
     const reviewInfo = await dao.selectReview(connection, noteId);
@@ -29,3 +47,12 @@ exports.retrieveReview = async function(noteId){
 
     return reviewInfo;
 }
+
+exports.idCheck = async function (userId) {
+    const connection = await pool.getConnection(async (conn) => conn);
+    const idCheckResult = await dao.selectUserId(connection, userId);
+    connection.release();
+  
+    return idCheckResult;
+};
+  

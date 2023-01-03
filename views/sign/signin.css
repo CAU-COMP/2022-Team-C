@@ -64,7 +64,6 @@ html {
   }
   
   
-  
   /* TABS */
   
   h2.inactive {
@@ -75,9 +74,7 @@ html {
     color: #0d0d0d;
     border-bottom: 2px solid rgb(21, 74, 153);
   }
-  
-  
-  
+   
   /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
@@ -144,6 +141,16 @@ html {
     color: #cccccc;
   }
   
+  .input .eyes {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 2px;
+    height: 30px;
+    font-size: 22px;
+    cursor: pointer;
+  }
   
   /* OTHERS */
   

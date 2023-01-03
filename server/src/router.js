@@ -4,48 +4,22 @@ module.exports = function(app){
     const user = require("./controller");
 
     app.get("/", function(req, res){
-        res.render("main/main.html");
+        res.render("main/main.ejs");
     });
 
-    app.get("/test", function(req, res){
-        res.render("member_main/main.html");
-    });
-
-      
     app.get("/signUp", function(req, res){
-        res.render("sign/signUp.html");
+        res.render("sign/signUp.ejs");
     });
-    app.post("/signUp", user.signUp);
+    app.get("/signIn", user.getSignIn);
+    app.get("/logout", user.logout);
 
-    app.get("/signIn", function(req, res){
-        res.render("sign/signIn.html");
-    });
+    app.post("/signUp", user.signUp);
     app.post("/signIn", user.signIn);
 
 
 
-    
-    app.get("/field", function(req, res){
-        res.render("upload/main.html");
-    });
-
-    app.get("/note", function(req, res){
-        res.render("notes/main.html");
-    });
-
-
-
-
-
-
-    //app.get("/main/:userId", user.getMain);
-
-    //app.get("/notes/:noteId", user.getNote);
-    //app.patch("/notes/:noteId", user.hitsUp);               // 조회수 + 1
-
-    
-    
-    
-    
+    app.get("/test", user.getMain);             // 네모에 필기 미리보기 추가
+    app.get("/notes/:noteId", user.getNote);         // 네모에 필기 내용 추가
+    app.get("/field", user.uploadNote);             // 필기 업로드 추가 -> post
     
 }
