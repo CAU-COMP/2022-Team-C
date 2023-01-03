@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필드 : 메인</title>
+    <link rel="stylesheet" href="./member_main/layout.css">
+    <link rel="stylesheet" href="./member_main/style.css">
+    <link rel="stylesheet" href="./member_main/box.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item">&nbsp&nbsp
+            <a href="/test"><img src="./member_main/image/home.png" alt="plus" width="30" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text"/></div>
+        <div class="item"> <input id="search_button" type="button" value="search"/> </div>
+        <div class="item">
+            <a id="user_id"><%= user.name %> 님</a>&nbsp;&nbsp;&nbsp; 
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="sidebar">
+                <div class="sidebar_contents">
+                    <div class="profile_img_box" style="background: #BDBDBD;">
+                        <img class="profile_img" src="./profile/<%= user.profile %>">
+                    </div>
+                    <div id="profile_id"><%= user.name %> 님</div>
+                    <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
+                    <div id="sidebar_btn_group">
+                        <button id="sidebar_btn1">회원정보 수정</button><br>
+                        <button id="sidebar_btn2">마이페이지</button><br>
+                        <button id="sidebar_btn3">내 필드 관리</button><br>
+                        <button id="sidebar_btn4" onclick="location.href='/logout'">로그아웃</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item"></div>  <!--빈공간-->
+        <div class="item">
+            <div><p id="mysub_newfield">내 과목 새 필드</p></div>
+        </div>
+<!--
+        <div class="item">
+            <div id="today_box">
+                <div id="today_field">
+                    <p id="today_text">🏆 인기 필드 🏆</p>
+                    <% for(var i = 0; i < 4; i++){ %>
+                        <% if (!popular[i]) { %>
+                            <%break;%>
+                        <% } %>
+                    
+                        <% if (i == 0) { %>
+                            <div id="top<%=i+1%>">
+                                <div id="content_box"><%= popular[i].explanation %></div>
+                                <p id="top<%=i+1%>_field">🥇 <%= popular[i].name %> 님의 <%= popular[i].course %> 필기</p>
+                            </div>
+                        <% } %>
+                        <% if (i == 1) { %>
+                            <div id="top<%=i+1%>">
+                                <div id="content_box"><%= popular[i].explanation %></div>
+                                <p id="top<%=i+1%>_field">🥈 <%= popular[i].name %> 님의 <%= popular[i].course %> 필기</p>
+                            </div>
+                        <% } %>
+                        <% if (i == 2) { %>
+                            <div id="top<%=i+1%>">
+                                <div id="content_box"><%= popular[i].explanation %></div>
+                                <p id="top<%=i+1%>_field">🥉 <%= popular[i].name %> 님의 <%= popular[i].course %> 필기</p>
+                            </div>
+                        <% } %>
+                        <% if (i == 3) { %>
+                            <div id="top<%=i+1%>">
+                                <div id="content_box"><%= popular[i].explanation %></div>
+                                <p id="top<%=i+1%>_field">🏅 <%= popular[i].name %> 님의 <%= popular[i].course %> 필기</p>
+                            </div>
+                        <% } %>
+                    
+                </div>
+            </div>
+        </div>
+-->
+        <div class="item">
+            <div id="new_box">
+                <% for(var i = 0; i < 6; i++){ %>
+                    <% if (!newNote[i]) { %>
+                        <% break; %>
+                    <% } %>
+                    <% var idx = i / 2 + 1; %>
+                    <div id = "box_group<%=idx%>">
+                        <div id="box_frame">
+                            <div id="box<%=i+1%>"> <%= newNote[i].explanation %> </div>
+                            <p id="new<%=i+1%>"><%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기</p>
+                        </div>
+                        <% i++; %>
+                        <div id="box_frame">
+                            <div id="box<%=i+1%>"> <%= newNote[i].explanation %> </div>
+                            <p id="new<%=i+1%>"><%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기</p>
+                        </div>
+                    </div>    
+                <% } %>
+                
+            </div>
+        </div>
+
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+</html>

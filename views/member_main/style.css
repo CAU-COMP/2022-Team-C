@@ -1,6 +1,7 @@
 #search{
-    height: 20px;
-    width: calc(100vw - 800px);
+    height: 30px;
+    width: 700px;
+    font-size: 18px;
 }
 
 #search_button{
@@ -23,13 +24,18 @@
 }
 
 #search_button:hover{
-    background-color: #999999;
+    background-color: #cccccc;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba (0, 79, 255, 0.6);
 }
 
+#user_id{
+    text-align: end;
+    width:200px;
+}
+
 #background{
-    background-color: rgb(230, 230, 230);
+    background-color: #eceef2;
 }
 
 #field{
@@ -44,3 +50,84 @@
     transform: translate(-50%, -50%);
     padding: 40px;
 }
+
+#profile_id{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+#profile_point{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+
+#sidebar_btn1{
+    margin-top: 50px;
+    width: 250px;
+    height: 50px;
+}
+#sidebar_btn2{
+    margin-top: 10px;
+    width: 250px;
+    height: 50px;
+}
+#sidebar_btn3{
+    margin-top: 10px;
+    width: 250px;
+    height: 50px;
+}
+#sidebar_btn4{
+    margin-top: 10px;
+    width: 250px;
+    height: 50px;
+}
+
+#sidebar_btn_group button{
+    color: rgb(21, 74, 153);
+    padding: 5px;
+    font-size: 15px;
+}
+
+#sidebar_btn_group button:hover{
+    background-color: #cccccc;
+}
+
+#mysub_newfield{
+    margin-left: 150px;
+    text-align: center;
+    font-size: 22px;
+    color: rgb(21, 74, 153);
+    font-weight: bold;
+}
+
+#new1{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
+#new2{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
+#new3{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
+#new4{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
+#new5{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
+#new6{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
+
+#today_field{
+    text-align: center;
+}
+
+#today_text{
+    margin-top: 60px;
+    text-align: center;
+    font-size: 22px;
+    color: rgb(21, 74, 153);
+    font-weight: bold;
+}
+
+#top1 #content_box{
+    margin-top: 40px;
+}
+
+#top1_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
+#top2_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
+#top3_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
+#top4_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}

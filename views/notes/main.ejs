@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필드 : 필기 열람</title>
+    <link rel="stylesheet" href="./layout.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./box.css">
+    <link rel="stylesheet" href="./space.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item">&nbsp&nbsp
+            <a href="/test"><img src="../member_main/image/home.png" alt="plus" width="30" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/field"><img src="../member_main/image/plus.png" alt="plus" width="25" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text"/>
+        </div>
+        <div class="item"> <input id="search_button" type="button" value="search"/> </div>
+        <div class="item">
+            <a id="user_id"><%= user.name %> 님</a>&nbsp;&nbsp;&nbsp; 
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="sidebar">
+                <div class="sidebar_contents">
+                    <div class="profile_img_box" style="background: #BDBDBD;">
+                        <img class="profile_img" src="./profile/<%= user.profile %>">
+                    </div>
+                    <div id="profile_id"><%= user.name %> 님</div>
+                    <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
+                    <div id="sidebar_btn_group">
+                        <button id="sidebar_btn1">회원정보 수정</button><br>
+                        <button id="sidebar_btn2">마이페이지</button><br>
+                        <button id="sidebar_btn3">내 필드 관리</button><br>
+                        <button id="sidebar_btn4" onclick="location.href='/logout'">로그아웃</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item" id="background" style="color:#004fff; font-weight:700;">&nbsp;<%= note.name %>님의 <%= note.course_name %> 필기</div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background">
+            <div id="box1"></div>
+            <div id="box2">
+                &nbsp;&nbsp;- 과목 코드 : <%= note.course_id %> <br/>
+                &nbsp;&nbsp;- 교수명 : <%= note.instructor_name %> <br/>
+                &nbsp;&nbsp;- 학기/구분 : <%= note.year %>-<%= note.semester %>/<%= note.classification %> <br/>
+                &nbsp;&nbsp;- 설명: <%= note.explanation %>
+            </div>
+        </div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background">
+            <div id="box3">
+                <div id="space1" style="color:#004fff">
+                    포인트: <%= note.point %>  &nbsp;&nbsp; <input id="get_button" type="button" value="열람하기"/> 
+                </div>
+                <div id="space2"></div>
+                <% var avg = 0, i = 0; %>
+                <% for(i = 0; i < 3; i++){ %>
+                    <% if (!review[i]) { %>
+                        <%break;%>
+                    <% } %>
+                    <% avg += review[i].rating; %> 
+                <% } %>
+                <% if (avg > 0) { %>
+                    <% avg = avg / i; %>
+                <% } %>
+                <div id="space3">[리뷰] &nbsp;&nbsp; 평균 평점: <%= avg.toFixed(2); %></div>
+                <div id="space4">                  
+                    <% for(i = 0; i < 3; i++){ %>
+                        <% if (!review[i]) { %>
+                            <%break;%>
+                        <% } %>
+                        <div id="review_box">
+                            <%= review[i].name %>님의 리뷰<br/>
+                            ------------------------------------<br/>
+                            - 평점 : <%= review[i].rating %><br/>                           
+                            - <%= review[i].comment %>  
+                        </div> <br/>  
+                    <% } %>
+
+                </div>   
+            </div>
+        </div>
+        <div class="item" id="background"></div>
+        <div class="item" id="background"></div>
+    </div>
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+</html>

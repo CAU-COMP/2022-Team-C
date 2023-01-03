@@ -1,3 +1,112 @@
 #search{
-    height: 30px; width: calc(100vw - 1000px);
+    height: 40px; 
+    width: 600px;
+    border-radius: 18px;
+    border: 2px solid rgb(21, 74, 153);
+    font-size: 20px;
+    text-align: center;
+}
+
+#search_button{
+    display: inline-block;
+    height: 40px;
+    width: 80px;
+    background-color:  rgb(21, 74, 153);
+    border: 2px solid  rgb(21, 74, 153);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    position:relative;
+    transition:0.3s;
+}
+
+#search_button:focus{
+outline: 0; 
+}
+
+#search_button:hover{
+background-color: #cccccc;
+cursor: pointer;
+box-shadow: 0 2px 4px rgba (0, 79, 255, 0.6);
+}
+
+#login_button{
+    margin-top: 0px;
+    width: 400px;
+    height: 100px;
+    background-color: #fff;
+    border: none;
+    color: rgb(21, 74, 153);
+    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 40px;
+    position: absolute;
+    transition:0.3s;
+}
+
+#login_button:focus{
+    outline: 0; 
+}
+
+#login_button:hover{
+    background-color: #cccccc;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba (0, 79, 255, 0.6);
+}
+
+#line{
+    color: aliceblue;
+}
+
+#school_title{
+    color: #fff;
+    font-size: 25px;
+}
+
+#schoolname{
+    height: 25px;
+    width: 130px;
+    border-radius: 15px;
+    border: 2px solid rgb(21, 74, 153);
+}
+
+#school_search{
+    height: 30px; 
+    width: 300px;
+    border-radius: 18px;
+    border: 2px solid rgb(255, 255, 255);
+    font-size: 15px;
+    text-align: center;
+}
+
+#school_button{
+    height: 30px;
+    width: 80px;
+    background-color:  rgb(121, 173, 250);
+    border: 2px solid  rgb(121, 173, 250);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 15px;
+    position:relative;
+    transition:0.3s;
+}
+
+#school_button:hover{
+background-color: #cccccc;
+cursor: pointer;
+box-shadow: 0 2px 4px rgba (0, 79, 255, 0.6);
+}
+
+#school_name{
+    color: #fff;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
 }
