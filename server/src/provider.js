@@ -11,6 +11,15 @@ exports.retrieveCourse = async function (){
     return course;
 }
 
+exports.retrieveCourseID = async function (course_name){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const course_id = await dao.selectCourseID(connection, course_name);
+  
+    connection.release();
+  
+    return course_id[0].id;
+}
+
 exports.retrieveNote = async function(noteId){
     const connection = await pool.getConnection(async (conn) => conn);
     const noteInfo = await dao.selectNote(connection, noteId);

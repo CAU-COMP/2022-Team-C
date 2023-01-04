@@ -32,7 +32,6 @@ exports.createUser = async function (id, pw, email, name, dept) {
     }
 };
 
-
 exports.postSignIn = async function (id, pw) {
     try {
         // 아이디 중복 확인 
@@ -72,3 +71,17 @@ exports.updateHits = async function(noteId){
         console.log(err.massage);
     }
 }
+
+exports.createNote = async function(id, course_id, year, semester, instructor, member_id, upload_time, file_name, point, explanation){
+    try{
+        const insertNoteInfoParams = [id, course_id, year, semester, instructor, member_id, upload_time, file_name, point, explanation, 0];
+        const connection = await pool.getConnection(async (conn) => conn);
+        const noteResult = await dao.insertNoteInfo(connection, insertNoteInfoParams);
+
+        connection.release();
+        return noteResult;
+
+    } catch(err){
+        console.log(err.massage);
+    }
+};
