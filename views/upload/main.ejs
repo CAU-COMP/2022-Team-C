@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +10,21 @@
     <link rel="stylesheet" href="./upload/style.css">
     <link rel="stylesheet" href="./upload/box.css">
 </head>
+
 <body>
     <div class="container">
         <div class="item">&nbsp&nbsp
-            <a href="/test"><img src="./member_main/image/home.png" alt="plus" width="30" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="search" type="text"/></div>
-        <div class="item"> <input id="search_button" type="button" value="search"/> </div>
+            <a href="/test"><img src="./member_main/image/home.png" alt="plus" width="30" height="25"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="search" type="text" />
+        </div>
+        <div class="item"> <input id="search_button" type="button" value="search" /> </div>
         <div class="item">
-            <a id="user_id"><%= user.name %> 님</a>&nbsp;&nbsp;&nbsp; 
+            <a id="user_id">
+                <%= user.name %> 님
+            </a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="menuicon">
             <label for="menuicon">
                 <span></span>
@@ -29,7 +36,9 @@
                     <div class="profile_img_box" style="background: #BDBDBD;">
                         <img class="profile_img" src="./profile/<%= user.profile %>">
                     </div>
-                    <div id="profile_id"><%= user.name %> 님</div>
+                    <div id="profile_id">
+                        <%= user.name %> 님
+                    </div>
                     <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
                     <div id="sidebar_btn_group">
                         <button id="sidebar_btn1">회원정보 수정</button><br>
@@ -40,65 +49,73 @@
                 </div>
             </div>
         </div>
-        <div class="item"> </div>
-        <div class="item"> 
-            <h3>작성강의 선택</h3>&nbsp;&nbsp;&nbsp;
-            <input id="search_lecture_space" type="text" list="searchLecture"/>
-        <datalist id="searchLecture">
-            <% for(let obj of course) { %>
-                <option value=<%= obj.name %>>     
-            <% } %>
-        </datalist> 
-        </div>
-        <div class="item">
-            <div id="big_box" >
-                <p id="upload_text"># 과목 정보 입력</p>
-                <div id="sub_info_box">
-                    <div id="sub_info">
-                        <p>수강 연도</p>
-                        <input type="text" id="info_year" placeholder="ex) 2023" onfocus="this.placeholder=''" onblur="this.placeholder='ex) 2023'" >
-                    </div>
-                    <div id="sub_info">
-                        <p >수강 학기</p>
-                        <input type="text" id="info_semester" placeholder="ex) 1 / 2" onfocus="this.placeholder=''" onblur="this.placeholder='ex) 1 / 2'">
-                    </div>
-                    <div id="sub_info">
-                        <p >교수명&nbsp&nbsp&nbsp&nbsp</p>
-                        <input type="text" id="info_professor" placeholder="ex) 홍길동" onfocus="this.placeholder=''" onblur="this.placeholder='ex) 홍길동'">
-                    </div>
-                    <div id="sub_info">
-                        <p >개설 학과</p>
-                        <input type="text" id=id="info_major" placeholder="ex) 소프트웨어학부" onfocus="this.placeholder=''" onblur="this.placeholder='ex) 소프트웨어학부'">
-                    </div>
-                    <div id="sub_info">
-                        <p >구 &nbsp&nbsp&nbsp분&nbsp&nbsp&nbsp</p>
-                        <input type="text" id="info_sub_type" placeholder="ex) 교양 / 전공필수" onfocus="this.placeholder=''" onblur="this.placeholder='ex) 교양 / 전공필수'">
-                    </div>
-                </div>
-                <p id="upload_text"># 필기 파일 업로드</p>
-                <input type="file" name="file" id="file">
-                <p id="upload_text"># 설명 작성</p>
-                <div id="write_space">
-                    <textarea id="small_box"></textarea>
-                </div>
-                <p id="upload_text"># 필기 포인트 설정</p>
-                <div id="point_bnt_group">
-                    <input type='radio' id='onep' name='point'/>
-                    <label for='onep'>1</label>
-                    <input type='radio' id='fivep' name='point'/>
-                    <label for='fivep'>5</label>
-                    <input type='radio' id='tenp' name='point'/>
-                    <label for='tenp'>10</label>
-                    <input type='radio' id='fifteenp' name='point'/>
-                    <label for='fifteenp'>15</label>
-                </div>
-                <button id="submit_btn">필기 등록</button>
+        <!--<div class="item"> </div>-->
+        <form action="/field" method="POST" id="note" encType="multipart/form-data">
+
+            <div class="item">
+                <h3>작성강의 선택</h3>&nbsp;&nbsp;&nbsp;
+                <input id="search_lecture_space" type="text" list="searchLecture" name="lecture" />
+                <datalist id="searchLecture">
+                    <% for(let obj of course) { %>
+                        <option value=<%=obj.name %>>
+                            <% } %>
+                </datalist>
             </div>
-        </div>
-    </div>
+            <div class="item">
+                <div id="big_box">
+                    <p id="upload_text"># 과목 정보 입력</p>
+                    <div id="sub_info_box">
+                        <div id="sub_info">
+                            <p>수강 연도</p>
+                            <input type="text" id="info_year" placeholder="ex) 2023" onfocus="this.placeholder=''"
+                                name="year" onblur="this.placeholder='ex) 2023'">
+                        </div>
+                        <div id="sub_info">
+                            <p>수강 학기</p>
+                            <input type="text" id="info_semester" placeholder="ex) 1 / 2" onfocus="this.placeholder=''"
+                                name="semester" onblur="this.placeholder='ex) 1 / 2'">
+                        </div>
+                        <div id="sub_info">
+                            <p>교수명&nbsp&nbsp&nbsp&nbsp</p>
+                            <input type="text" id="info_professor" placeholder="ex) 홍길동" onfocus="this.placeholder=''"
+                                name="instructor" onblur="this.placeholder='ex) 홍길동'">
+                        </div>
+                        <div id="sub_info">
+                            <p>개설 학과</p>
+                            <input type="text" id=id="info_major" placeholder="ex) 소프트웨어학부" name="dept"
+                                onfocus="this.placeholder=''" onblur="this.placeholder='ex) 소프트웨어학부'">
+                        </div>
+                        <div id="sub_info">
+                            <p>구 &nbsp&nbsp&nbsp분&nbsp&nbsp&nbsp</p>
+                            <input type="text" id="info_sub_type" placeholder="ex) 교양 / 전공필수" name="type"
+                                onfocus="this.placeholder=''" onblur="this.placeholder='ex) 교양 / 전공필수'">
+                        </div>
+                    </div>
+                    <p id="upload_text"># 필기 파일 업로드</p>
+                    <input type="file" name="file" id="file" accept="image/*,text/plain,.pdf,.docx,.hwp">
+                    <p id="upload_text"># 설명 작성</p>
+                    <div id="write_space">
+                        <textarea id="small_box" name="explanation"></textarea>
+                    </div>
+                    <p id="upload_text"># 필기 포인트 설정</p>
+                    <div id="point_bnt_group">
+                        <input type='radio' id='onep' name='point' value="1" />
+                        <label for='onep'>1</label>
+                        <input type='radio' id='fivep' name='point' value="5" />
+                        <label for='fivep'>5</label>
+                        <input type='radio' id='tenp' name='point' value="10" />
+                        <label for='tenp'>10</label>
+                        <input type='radio' id='fifteenp' name='point' value="15" />
+                        <label for='fifteenp'>15</label>
+                    </div>
+                    <button type="submit" id="submit_btn">필기 등록</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    </html>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+</html>

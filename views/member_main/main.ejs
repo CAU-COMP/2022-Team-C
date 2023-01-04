@@ -50,28 +50,27 @@
                     <p id="today_text">🏆 인기 필드 🏆</p>
                     <% var i = 0; %>
                     <div id="top<%=i+1%>">
-                        <div id="content_box"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
                         <p id="top<%=i+1%>_field">🥇 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>
                     <% i++; %>
                     <div id="top<%=i+1%>">
-                        <div id="content_box"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
                         <p id="top<%=i+1%>_field">🥈 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>
                     
                     <div id="top<%=i+1%>">
-                        <div id="content_box"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
                         <p id="top<%=i+1%>_field">🥉 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>
                     <% i++; %>
                     <div id="top<%=i+1%>">
-                        <div id="content_box"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
                         <p id="top<%=i+1%>_field">🏅 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>                 
                 </div>
             </div>
-        </div>
-        
+        </div>    
         <div class="item">
             <div id="new_box">
                 <% for(var i = 0; i < 6; i++){ %>
@@ -81,12 +80,12 @@
                     <% var idx = i / 2 + 1; %>
                     <div id = "box_group<%=idx%>">
                         <div id="box_frame">
-                            <div id="box<%=i+1%>"> <%= newNote[i].explanation %> </div>
+                            <div id="box<%=i+1%>" onclick="location.href='/notes/<%= newNote[i].id %>'">> <%= newNote[i].explanation %> </div>
                             <p id="new<%=i+1%>"><%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기</p>
                         </div>
                         <% i++; %>
                         <div id="box_frame">
-                            <div id="box<%=i+1%>"> <%= newNote[i].explanation %> </div>
+                            <div id="box<%=i+1%>" onclick="location.href='/notes/<%= newNote[i].id %>'">> <%= newNote[i].explanation %> </div>
                             <p id="new<%=i+1%>"><%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기</p>
                         </div>
                     </div>    
