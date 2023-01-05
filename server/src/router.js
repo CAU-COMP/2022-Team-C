@@ -32,12 +32,13 @@ module.exports = function (app) {
     app.get("/field", user.getUpload);
     app.post("/field", upload.single('file'), user.uploadNote);
 
+    app.get("/myInfo", user.getMyInfo);                 // 수정 필요
+
+    app.get("/myField", user.getMyField);
 
 
-
-
-    app.get("/test", user.getMain);             // 네모에 필기 미리보기 추가
-    app.get("/notes/:noteId", user.getNote);         // 네모에 필기 내용 추가
+    app.get("/test", user.getMain);  
+    app.get("/notes/:noteId", user.getNote); 
 
 
 

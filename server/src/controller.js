@@ -37,10 +37,35 @@ exports.getMain = async function (req, res) {
         return res.redirect("/");
 
     const newNote = await provider.retrieveNewNote(req.session.userId);             // 내 과목 새 필드
-    const popularNote = await provider.retrievepopularNote();     // 인기 필드
+    const popularNote = await provider.retrievepopularNote();                       // 인기 필드
 
     return res.render("member_main/main.ejs", { 'user': userData, 'newNote': newNote, 'popularNote': popularNote });
 }
+
+exports.getMyField = async function (req, res) {
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+    if (!req.session.name)
+        return res.redirect("/");
+
+    const myNote = await provider.retrieveMyNote(req.session.userId);       // 내 필기 가져오기
+
+    return res.render("myField/main.ejs", { 'user': userData, 'myNote': myNote });
+}
+
+
+
+exports.getMyInfo = async function (req, res) {                                             ///// 마이페이지 수정 필요
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+    if (!req.session.name)
+        return res.redirect("/");
+
+   
+
+    return res.render("myPage/main.ejs", { 'user': userData });
+    
+}
+
+
 
 exports.getSignIn = async function (req, res) {
 
@@ -59,7 +84,7 @@ exports.signIn = async function (req, res) {
 
     const signInService = await service.postSignIn(id, pw);
 
-    if (!signInService)            // 로그인 실패
+    if (!signInService[0])            // 로그인 실패
         return res.redirect("/signIn");
     if (signInService[0].id == id) {     // 로그인 성공
         req.session.userId = signInService[0].id;
