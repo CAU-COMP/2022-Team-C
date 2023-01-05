@@ -97,41 +97,14 @@
 }
 
 #mysub_newfield{
-    margin-left: 150px;
-    text-align: center;
-    font-size: 22px;
+    text-align: start;
+    font-size: 25px;
     color: rgb(21, 74, 153);
     font-weight: bold;
 }
-
-#new1{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
-#new2{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
-#new3{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
-#new4{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
-#new5{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
-#new6{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}
-
-#today_field{
-    text-align: center;
-}
-
-#today_text{
-    margin-top: 60px;
-    text-align: center;
-    font-size: 22px;
-    color: rgb(21, 74, 153);
-    font-weight: bold;
-}
-
-#top1 #content_box{
-    margin-top: 40px;
-}
-
-#top1_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
-#top2_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
-#top3_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
-#top4_field{font-size: 18px; color: rgb(21, 74, 153); font-weight: bold;}
 
 #preview_img{
     height: 100%;
 }
+
+#new{font-size: 20px; color: rgb(21, 74, 153); font-weight: bold;}

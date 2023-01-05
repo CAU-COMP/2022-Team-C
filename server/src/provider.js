@@ -47,6 +47,14 @@ exports.retrievepopularNote = async function(){
     return popularNoteInfo;
 }
 
+exports.retrieveMyNote = async function(userId){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const myNoteInfo = await dao.selectMyNote(connection, userId);
+    
+    connection.release();
+
+    return myNoteInfo;
+}
 
 exports.retrieveReview = async function(noteId){
     const connection = await pool.getConnection(async (conn) => conn);

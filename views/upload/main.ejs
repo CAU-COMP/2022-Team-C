@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="item">&nbsp&nbsp
-            <a href="/test"><img src="./member_main/image/home.png" alt="plus" width="30" height="25"></a>
+            <a href="/test"><img src="./member_main/image/home.png" alt="home" width="30" height="25"></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -42,14 +42,14 @@
                     <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
                     <div id="sidebar_btn_group">
                         <button id="sidebar_btn1">회원정보 수정</button><br>
-                        <button id="sidebar_btn2">마이페이지</button><br>
-                        <button id="sidebar_btn3">내 필드 관리</button><br>
+                        <button id="sidebar_btn2" onclick="location.href='/myInfo'">마이페이지</button><br>
+                        <button id="sidebar_btn3" onclick="location.href='/myField'">내 필드 관리</button><br>
                         <button id="sidebar_btn4" onclick="location.href='/logout'">로그아웃</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!--<div class="item"> </div>-->
+        <div class="item"> </div>
         <form action="/field" method="POST" id="note" encType="multipart/form-data">
 
             <div class="item">

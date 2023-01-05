@@ -12,8 +12,9 @@
 <body>
     <div class="container">
         <div class="item">&nbsp&nbsp
-            <a href="/test"><img src="./member_main/image/home.png" alt="plus" width="30" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text"/></div>
+            <a href="/test"><img src="./member_main/image/home.png" alt="home" width="30" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a> &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text"/>
+        </div>
         <div class="item"> <input id="search_button" type="button" value="search"/> </div>
         <div class="item">
             <a id="user_id"><%= user.name %> 님</a>&nbsp;&nbsp;&nbsp; 
@@ -32,8 +33,8 @@
                     <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
                     <div id="sidebar_btn_group">
                         <button id="sidebar_btn1">회원정보 수정</button><br>
-                        <button id="sidebar_btn2">마이페이지</button><br>
-                        <button id="sidebar_btn3">내 필드 관리</button><br>
+                        <button id="sidebar_btn2" onclick="location.href='/myInfo'">마이페이지</button><br>
+                        <button id="sidebar_btn3" onclick="location.href='/myField'">내 필드 관리</button><br>
                         <button id="sidebar_btn4" onclick="location.href='/logout'">로그아웃</button>
                     </div>
                 </div>
@@ -50,22 +51,30 @@
                     <p id="today_text">🏆 인기 필드 🏆</p>
                     <% var i = 0; %>
                     <div id="top<%=i+1%>">
-                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                            <img id="preview_img" src="./notes/image/preview.png">
+                        </div>
                         <p id="top<%=i+1%>_field">🥇 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>
                     <% i++; %>
                     <div id="top<%=i+1%>">
-                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                            <img id="preview_img" src="./notes/image/preview.png">
+                        </div>
                         <p id="top<%=i+1%>_field">🥈 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>
                     
                     <div id="top<%=i+1%>">
-                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                            <img id="preview_img" src="./notes/image/preview.png">
+                        </div>
                         <p id="top<%=i+1%>_field">🥉 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>
                     <% i++; %>
                     <div id="top<%=i+1%>">
-                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'"><%= popularNote[i].explanation %></div>
+                        <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                            <img id="preview_img" src="./notes/image/preview.png">
+                        </div>
                         <p id="top<%=i+1%>_field">🏅 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기</p>
                     </div>                 
                 </div>
@@ -80,12 +89,16 @@
                     <% var idx = i / 2 + 1; %>
                     <div id = "box_group<%=idx%>">
                         <div id="box_frame">
-                            <div id="box<%=i+1%>" onclick="location.href='/notes/<%= newNote[i].id %>'">> <%= newNote[i].explanation %> </div>
+                            <div id="box<%=i+1%>" onclick="location.href='/notes/<%= newNote[i].id %>'">
+                                <img id="preview_img" src="./notes/image/preview.png">
+                            </div>
                             <p id="new<%=i+1%>"><%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기</p>
                         </div>
                         <% i++; %>
                         <div id="box_frame">
-                            <div id="box<%=i+1%>" onclick="location.href='/notes/<%= newNote[i].id %>'">> <%= newNote[i].explanation %> </div>
+                            <div id="box<%=i+1%>" onclick="location.href='/notes/<%= newNote[i].id %>'">
+                                <img id="preview_img" src="./notes/image/preview.png">
+                            </div>
                             <p id="new<%=i+1%>"><%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기</p>
                         </div>
                     </div>    
@@ -93,7 +106,7 @@
                 
             </div>
         </div>
-        
+    </div>    
 </body>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>

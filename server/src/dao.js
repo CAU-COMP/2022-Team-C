@@ -51,11 +51,10 @@ async function selectUserId(connection, userId) {
     return idRows;
 }
 
-
 // 내 과목 새 필드 
 async function selectNewNote(connection, userId){
     const selectNewNoteQuery = `
-        SELECT M2.name, C.course_name as course, N.explanation, N.id
+        SELECT M2.name, C.course_name as course, N.id
         FROM member M1, member M2, note N, interest I, course_detail C
         WHERE M1.id = '${userId}' and I.member_id = M1.id and I.course_id = N.course_id and N.member_id = M2.id and I.course_id = C.course_id
         ORDER BY upload_time desc;
@@ -67,7 +66,7 @@ async function selectNewNote(connection, userId){
 // 인기 필드     ->      메인화면에 추가
 async function selectPopularNote(connection){
     const selectPopularNoteQuery = `
-        SELECT M.name, C.course_name as course, N.explanation, N.id
+        SELECT M.name, C.course_name as course, N.id
         FROM note N, member M, course_detail C
         WHERE N.member_id = M.id and N.course_id = C.course_id
         ORDER BY hits desc;
@@ -76,10 +75,24 @@ async function selectPopularNote(connection){
     return popularNoteRows;
 }
 
+// 내 필드 조회
+async function selectMyNote(connection, userId){
+    const selectMyNoteQuery = `
+        SELECT course_name as course, id
+        FROM note natural join course_detail
+        WHERE member_id = '${userId}';
+    `;
+    const [myNoteRows] = await connection.query(selectMyNoteQuery);
+    return myNoteRows;
+}
+
+
+
+
 // 필기 정보 조회
 async function selectNote(connection, noteId) {      // 필기 쓴 유저 이름, 과목명, 업로드 일자, 포인트, 설명
     const noteInfoQuery = `
-                  SELECT N.course_id, N.year, N.semester, N.instructor_name, N.upload_time, N.file, N.point, N.explanation, N.hits, 
+                  SELECT N.id, N.course_id, N.year, N.semester, N.instructor_name, N.upload_time, N.file, N.point, N.explanation, N.hits, 
                   M.name, C1.dept_name, C1.classification, C2.course_name
                   FROM note N natural join course C1, course_detail C2, member M
                   WHERE N.id = '${noteId}' and N.member_id = M.id and N.course_id = C2.course_id;
@@ -111,14 +124,15 @@ async function selectCourse(connection) {
 
 // 과목 코드 조회
 async function selectCourseID(connection, course_name) {
-    const courseIdListQuery = `
+    const courseIdQuery = `
                   SELECT course_id as id
                   FROM course_detail
                   WHERE course_name = '${course_name}';
                   `;
-    const [courseIdInfo] = await connection.query(courseIdListQuery);
+    const [courseIdInfo] = await connection.query(courseIdQuery);
     return courseIdInfo;
 }
+
 
 // 조회수 증가
 async function updateNoteHits(connection, noteId) {
@@ -141,6 +155,7 @@ module.exports = {
     selectUserId,
     selectNewNote,
     selectPopularNote,
+    selectMyNote,
     selectCourse,
     selectCourseID,
 
