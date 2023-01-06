@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>필드</title>
     <link rel="stylesheet" href="./main/layout.css">
     <link rel="stylesheet" href="./main/style.css">
     <link rel="stylesheet" href="./main/box.css">
 </head>
+
 <body>
     <div class="container">
         <div class="item">
             <img src="./main/image/logo.jpg" alt="logo" width="200" height="120">
             <div id="search_box">
-            <input id="search" type="text" placeholder="찾으시는 과목을 입력해보세요!" onfocus="this.placeholder=''" onblur="this.placeholder='찾으시는 과목을 입력해보세요!'"/>&nbsp;&nbsp;
-            <button type="button" id="search_button" value="search">search</button>
+                <form action="/search" method="POST">
+                    <input id="search" type="text" placeholder="찾으시는 과목을 입력해보세요!" onfocus="this.placeholder=''"
+                        onblur="this.placeholder='찾으시는 과목을 입력해보세요!'" name="keyword"/>&nbsp;&nbsp;
+                    <button type="submit" id="search_button" value="search">search</button>
+                </form>
             </div>
         </div>
         <div class="item">
@@ -23,13 +28,16 @@
                 <div id="login_box">dfse
                     <button id="login_button" type="button" onclick="location.href='/signIn'">login</button>
                 </div>
-                <div id="line"><p>__________________________________________</p></div>
-                
+                <div id="line">
+                    <p>__________________________________________</p>
+                </div>
+
                 <div>
                     <p id="school_title">우리 학교 둘러보기 🚀</p>
                 </div>
                 <div id="school_search_box">
-                    <input id="school_search" type="text" placeholder="학교명 검색" onfocus="this.placeholder=''" onblur="this.placeholder='학교명 검색'"/>&nbsp;&nbsp;
+                    <input id="school_search" type="text" placeholder="학교명 검색" onfocus="this.placeholder=''"
+                        onblur="this.placeholder='학교명 검색'" />&nbsp;&nbsp;
                     <button type="button" id="school_button" value="search">search</button>
                 </div>
                 <div id="school_name_box">
@@ -45,7 +53,8 @@
         </div>
     </div>
 </body>
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
 </html>

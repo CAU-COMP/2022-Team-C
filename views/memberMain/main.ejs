@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필드 : 메인</title>
+    <link rel="stylesheet" href="./memberMain/layout.css">
+    <link rel="stylesheet" href="./memberMain/style.css">
+    <link rel="stylesheet" href="./memberMain/box.css">
+</head>
+
+<body>
+    <div class="container">
+        <form class=item action="/search" method="POST">
+            <div class="icon_search">&nbsp&nbsp
+                <a href="/test"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/field"><img src="../memberMain/image/plus.png" alt="plus" width="25" height="25"></a>
+                &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text" name="keyword" />
+            </div>
+            <div class="search_btn"> <input id="search_button" type="submit" value="search" /></div>
+        </form>
+        <div class="item">
+            <a id="user_id">
+                <%= user.name %> 님
+            </a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="sidebar">
+                <div class="sidebar_contents">
+                    <div class="profile_img_box" style="background: #BDBDBD;">
+                        <img class="profile_img" src="./profile/<%= user.profile %>">
+                    </div>
+                    <div id="profile_id">
+                        <%= user.name %> 님
+                    </div>
+                    <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
+                    <div id="sidebar_btn_group">
+                        <button id="sidebar_btn1">회원정보 수정</button><br>
+                        <button id="sidebar_btn2" onclick="location.href='/myInfo'">마이페이지</button><br>
+                        <button id="sidebar_btn3" onclick="location.href='/myField'">내 필드 관리</button><br>
+                        <button id="sidebar_btn4" onclick="location.href='/logout'">로그아웃</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item"></div> <!--빈공간-->
+        <div class="item">
+            <div>
+                <p id="mysub_newfield">내 과목 새 필드</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div id="today_box">
+                <div id="today_field">
+                    <p id="today_text">🏆 인기 필드 🏆</p>
+                    <% var i=0; %>
+                        <div id="top<%=i+1%>">
+                            <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                                <img id="preview_img" src="./notes/image/preview.png">
+                            </div>
+                            <p id="top<%=i+1%>_field">🥇 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %> 필기
+                            </p>
+                        </div>
+                        <% i++; %>
+                            <div id="top<%=i+1%>">
+                                <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                                    <img id="preview_img" src="./notes/image/preview.png">
+                                </div>
+                                <p id="top<%=i+1%>_field">🥈 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %>
+                                            필기</p>
+                            </div>
+
+                            <div id="top<%=i+1%>">
+                                <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                                    <img id="preview_img" src="./notes/image/preview.png">
+                                </div>
+                                <p id="top<%=i+1%>_field">🥉 <%= popularNote[i].name %> 님의 <%= popularNote[i].course %>
+                                            필기</p>
+                            </div>
+                            <% i++; %>
+                                <div id="top<%=i+1%>">
+                                    <div id="content_box" onclick="location.href='/notes/<%= popularNote[i].id %>'">
+                                        <img id="preview_img" src="./notes/image/preview.png">
+                                    </div>
+                                    <p id="top<%=i+1%>_field">🏅 <%= popularNote[i].name %> 님의 <%= popularNote[i].course
+                                                %> 필기</p>
+                                </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div id="new_box">
+                <% for(var i=0; i < 6; i++){ %>
+                    <% if (!newNote[i]) { %>
+                        <% break; %>
+                            <% } %>
+                                <% var idx=i / 2 + 1; %>
+                                    <div id="box_group<%=idx%>">
+                                        <% for(var j=0; j < 2; j++){ %>
+                                            <% if (!newNote[i]) { %>
+                                                <% break; %>
+                                                    <% } %>
+                                                        <div id="box_frame">
+                                                            <div id="box<%=i+1%>"
+                                                                onclick="location.href='/notes/<%= newNote[i].id %>'">
+                                                                <img id="preview_img" src="./notes/image/preview.png">
+                                                            </div>
+                                                            <p id="new<%=i+1%>">
+                                                                <%= newNote[i].name %> 님의 <%= newNote[i].course %> 필기
+                                                            </p>
+                                                        </div>
+                                                        <% i++; %>
+                                                            <% } %>
+                                                                <% i--; %>
+                                    </div>
+                                    <% } %>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+</html>

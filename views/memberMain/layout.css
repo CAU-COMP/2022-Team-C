@@ -5,7 +5,7 @@ body {margin: 0;}
 
 .container{
     display:grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 420px;
     grid-template-rows: 60px 50px 60px 1100px;
 }
 
@@ -46,13 +46,30 @@ body {margin: 0;}
     display: flex;
     }
 
-.item:nth-child(4){  /* 내 필드 관리 */ 
-    grid-column: 1/4;
-    grid-row: 3/5;
+.item:nth-child(4){  /* 내 새 과목 필드 텍스트 */ 
+    grid-column: 1/3;
+    grid-row: 3/4;
     background-color: #eceef2;
     padding: 15px;
     display: flex;
+    align-items: center;
+    }
+
+.item:nth-child(5){  /* 인기필드 */ 
+    grid-column: 3/4;
+    grid-row: 3/5;
+    background-color: #eceef2;
+    padding: 0px;
+    display: flex;
     justify-content: center;
+    }
+
+.item:nth-child(6){  /* 내 과목 새 필드 */ 
+    grid-column: 1/3;
+    grid-row: 4/5;
+    background-color: #eceef2;
+    padding: 15px;
+    display: flex;
     }
 
 

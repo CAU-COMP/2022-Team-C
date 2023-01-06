@@ -86,9 +86,6 @@ async function selectMyNote(connection, userId){
     return myNoteRows;
 }
 
-
-
-
 // 필기 정보 조회
 async function selectNote(connection, noteId) {      // 필기 쓴 유저 이름, 과목명, 업로드 일자, 포인트, 설명
     const noteInfoQuery = `
@@ -134,6 +131,30 @@ async function selectCourseID(connection, course_name) {
 }
 
 
+/*
+SELECT id,p_name 
+FROM member 
+WHERE p_name LIKE '%프린터%'
+
+id varchar(12) PK 
+course_id int 
+year int 
+semester int 
+instructor_name varchar(30)
+*/
+
+// 검색 결과 조회
+async function selectSearch(connection, keyword) {          // 사용자 이름, 과목 이름, 필기 설명
+    const searchQuery = `
+                  SELECT M.name, C.course_name as course, N.explanation, N.id
+                  FROM member M, note N natural join course_detail C
+                  WHERE N.course_id LIKE '%${keyword}%' or N.instructor_name LIKE '%${keyword}%' or C.course_name LIKE '%${keyword}%'
+                  and N.member_id = M.id;
+                  `;
+    const [searchInfo] = await connection.query(searchQuery);
+    return searchInfo;
+}
+
 // 조회수 증가
 async function updateNoteHits(connection, noteId) {
     const updateHitsQuery = `
@@ -158,6 +179,7 @@ module.exports = {
     selectMyNote,
     selectCourse,
     selectCourseID,
+    selectSearch,
 
     selectNote,
     selectReview,

@@ -5,26 +5,29 @@ body {margin: 0;}
 
 .container{
     display:grid;
-    grid-template-columns: 2fr 1fr 420px;
-    grid-template-rows: 60px 50px 60px 1100px;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 60px auto;
 }
 
 .item:nth-child(1){
+    grid-column: 1 /3;
+    grid-row: 1/2;
     background-color: rgb(21, 74, 153);
     padding: 15px;
-    justify-content: flex-end;
-    align-items: center;
+    text-align: center;
     display: flex;
-    }
-    
-.item:nth-child(2){
-    background-color: rgb(21, 74, 153);
-    padding: 15px;
-    display: flex;
-    align-items: center;
     }
 
-.item:nth-child(3){  
+.icon_search{
+    display: flex;
+    align-items: center;
+}
+
+.search_btn{
+    margin-left: 20px;
+}
+
+.item:nth-child(2){  
     background-color: rgb(21, 74, 153);
     padding: 15px;
     justify-content: flex-end;
@@ -35,38 +38,13 @@ body {margin: 0;}
     font-weight: 700;
     }
 
-.item:nth-child(4){  /* 빈공간 */ 
-    grid-column: 1/4;
+.item:nth-child(3){ 
+    grid-column: 1 /4;
     grid-row: 2/3;
     background-color: #eceef2;
-    padding: 15px;
-    display: flex;
-    }
-
-.item:nth-child(5){  /* 내 새 과목 필드 텍스트 */ 
-    grid-column: 1/3;
-    grid-row: 3/4;
-    background-color: #eceef2;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    }
-
-.item:nth-child(6){  /* 인기필드 */ 
-    grid-column: 3/4;
-    grid-row: 3/5;
-    background-color: #eceef2;
-    padding: 0px;
     display: flex;
     justify-content: center;
-    }
-
-.item:nth-child(7){  /* 내 과목 새 필드 */ 
-    grid-column: 1/3;
-    grid-row: 4/5;
-    background-color: #eceef2;
-    padding: 15px;
-    display: flex;
+    margin-top: 20px;
     }
 
 
@@ -74,7 +52,7 @@ input[id="menuicon"] {display:none;}
 input[id="menuicon"] + label {display:block;margin:0px;width:35px;height:25px;position:relative;cursor:pointer;}
 input[id="menuicon"] + label span {display:block;position:absolute;width:100%;height:5px;border-radius:30px;background:#fff;transition:all .35s;}
 input[id="menuicon"] + label span:nth-child(1) {top:0;}
-input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);} /* ����ϰ� ����� �� �ִ� style top:calc(50% - 2.5px); margin-top:-2.5px;*/
+input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);}
 input[id="menuicon"] + label span:nth-child(3) {bottom:0;}
 input[id="menuicon"]:checked + label {z-index:2;}
 input[id="menuicon"]:checked + label span {background:#fff;}
@@ -104,8 +82,4 @@ input[id="menuicon"]:checked + label + div {right:0;}
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.today_content{
-    align-content: center;
 }

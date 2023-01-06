@@ -1,0 +1,93 @@
+#search{
+    height: 30px;
+    width: 700px;
+    font-size: 18px;
+}
+
+#search_button{
+        width: 80px;
+        height: 30px;
+        background-color: #fff;
+        border: none;
+        color: rgb(21, 74, 153);
+        box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 20px;
+        position: absolute;
+        transform: translate (-50%, -50%);
+        transition:0.3s;
+}
+
+#search_button:focus{
+    outline: 0; 
+}
+
+#search_button:hover{
+    background-color: #cccccc;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba (0, 79, 255, 0.6);
+}
+
+#user_id{
+    text-align: end;
+    width:200px;
+}
+
+#profile_id{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+#profile_point{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+
+#sidebar_btn1{
+    margin-top: 50px;
+    width: 250px;
+    height: 50px;
+}
+#sidebar_btn2{
+    margin-top: 10px;
+    width: 250px;
+    height: 50px;
+}
+#sidebar_btn3{
+    margin-top: 10px;
+    width: 250px;
+    height: 50px;
+}
+#sidebar_btn4{
+    margin-top: 10px;
+    width: 250px;
+    height: 50px;
+}
+
+#sidebar_btn_group button{
+    color: rgb(21, 74, 153);
+    padding: 5px;
+    font-size: 15px;
+}
+
+#sidebar_btn_group button:hover{
+    background-color: #cccccc;
+}
+
+#title_text{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(21, 74, 153);
+}
+#summary_text{
+    font-size: 15px;
+}
+
+#background{
+    background-color: rgb(230, 230, 230);
+}

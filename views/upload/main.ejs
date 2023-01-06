@@ -13,14 +13,15 @@
 
 <body>
     <div class="container">
-        <div class="item">&nbsp&nbsp
-            <a href="/test"><img src="./member_main/image/home.png" alt="home" width="30" height="25"></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/field"><img src="./member_main/image/plus.png" alt="plus" width="25" height="25"></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="search" type="text" />
-        </div>
-        <div class="item"> <input id="search_button" type="button" value="search" /> </div>
+        <form class=item action="/search" method="POST">
+            <div class="icon_search">&nbsp&nbsp
+                <a href="/test"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/field"><img src="../memberMain/image/plus.png" alt="plus" width="25" height="25"></a>
+                &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text" name="keyword" />
+            </div>
+            <div class="search_btn"> <input id="search_button" type="submit" value="search" /></div>
+        </form>
         <div class="item">
             <a id="user_id">
                 <%= user.name %> 님
@@ -50,18 +51,17 @@
             </div>
         </div>
         <div class="item"> </div>
-        <form action="/field" method="POST" id="note" encType="multipart/form-data">
-
-            <div class="item">
+        <form action="/field" class="item" method="POST" id="note" encType="multipart/form-data">
+            <div id="search_lecture_box">
                 <h3>작성강의 선택</h3>&nbsp;&nbsp;&nbsp;
                 <input id="search_lecture_space" type="text" list="searchLecture" name="lecture" />
                 <datalist id="searchLecture">
                     <% for(let obj of course) { %>
                         <option value=<%=obj.name %>>
-                            <% } %>
+                    <% } %>
                 </datalist>
             </div>
-            <div class="item">
+            <div id="upload_box">
                 <div id="big_box">
                     <p id="upload_text"># 과목 정보 입력</p>
                     <div id="sub_info_box">
@@ -98,7 +98,7 @@
                         <textarea id="small_box" name="explanation"></textarea>
                     </div>
                     <p id="upload_text"># 필기 포인트 설정</p>
-                    <div id="point_bnt_group">
+                    <div id="point_btn_group">
                         <input type='radio' id='onep' name='point' value="1" />
                         <label for='onep'>1</label>
                         <input type='radio' id='fivep' name='point' value="5" />

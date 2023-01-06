@@ -65,6 +65,14 @@ exports.retrieveReview = async function(noteId){
     return reviewInfo;
 }
 
+exports.retrieveSearch = async function (keyword) {
+    const connection = await pool.getConnection(async (conn) => conn);
+    const searchResult = await dao.selectSearch(connection, keyword);
+    connection.release();
+  
+    return searchResult;
+};
+  
 exports.idCheck = async function (userId) {
     const connection = await pool.getConnection(async (conn) => conn);
     const idCheckResult = await dao.selectUserId(connection, userId);
