@@ -39,7 +39,7 @@ exports.getMain = async function (req, res) {
     const newNote = await provider.retrieveNewNote(req.session.userId);             // 내 과목 새 필드
     const popularNote = await provider.retrievepopularNote();                       // 인기 필드
 
-    return res.render("member_main/main.ejs", { 'user': userData, 'newNote': newNote, 'popularNote': popularNote });
+    return res.render("memberMain/main.ejs", { 'user': userData, 'newNote': newNote, 'popularNote': popularNote });
 }
 
 exports.getMyField = async function (req, res) {
@@ -51,6 +51,48 @@ exports.getMyField = async function (req, res) {
 
     return res.render("myField/main.ejs", { 'user': userData, 'myNote': myNote });
 }
+
+exports.getSearch = async function (req, res) {
+
+    const { key } = req.query;
+
+    if(!req.session.name){
+        if(key == "") 
+            return res.render("search/main.ejs", { 'result': null, keyword : "" });
+        
+        const searchResult = await provider.retrieveSearch(key);
+
+        if(!searchResult)
+            return res.render("search/main.ejs", { 'result': null, keyword : "" });
+
+        return res.render("search/main.ejs", { 'result': searchResult, keyword : key });
+    }
+    else{
+        const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+        if(key == "") {
+            return res.render("search/memberMain.ejs", { 'user': userData, 'result': null, keyword : "" });
+        }
+        const searchResult = await provider.retrieveSearch(key);
+        if(!searchResult)
+            return res.render("search/memberMain.ejs", { 'user': userData, 'result': null, keyword : key });
+
+        return res.render("search/memberMain.ejs", { 'user': userData, 'result': searchResult, keyword : key });
+    }
+}
+
+exports.keyWord = async function (req, res) {
+
+    if(!req.body){
+        return res.redirect("/search?key=" +"");
+    }
+
+    const { keyword } = req.body;
+    if(keyword == undefined)
+        return res.redirect("/search?key=" + "");
+
+    return res.redirect("/search?key=" + keyword);
+}
+
 
 
 
@@ -84,7 +126,7 @@ exports.signIn = async function (req, res) {
 
     const signInService = await service.postSignIn(id, pw);
 
-    if (!signInService[0])            // 로그인 실패
+    if (!signInService || !signInService[0])            // 로그인 실패
         return res.redirect("/signIn");
     if (signInService[0].id == id) {     // 로그인 성공
         req.session.userId = signInService[0].id;

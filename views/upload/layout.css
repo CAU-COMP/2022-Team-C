@@ -10,21 +10,24 @@ body {margin: 0;}
 }
 
 .item:nth-child(1){
+    grid-column: 1 /3;
+    grid-row: 1/2;
     background-color: rgb(21, 74, 153);
     padding: 15px;
-    justify-content: flex-end;
-    align-items: center;
+    text-align: center;
     display: flex;
-    }
-    
-.item:nth-child(2){
-    background-color: rgb(21, 74, 153);
-    padding: 15px;
-    display: flex;
-    align-items: center;
     }
 
-.item:nth-child(3){  
+.icon_search{
+    display: flex;
+    align-items: center;
+}
+
+.search_btn{
+    margin-left: 20px;
+}
+
+.item:nth-child(2){  
     background-color: rgb(21, 74, 153);
     padding: 15px;
     justify-content: flex-end;
@@ -35,7 +38,7 @@ body {margin: 0;}
     font-weight: 700;
     }
 
-.item:nth-child(4){  /* 빈공간 */ 
+.item:nth-child(3){  /* 빈공간 */ 
     grid-column: 1 /4;
     grid-row: 2/3;
     background-color: #eceef2;
@@ -43,24 +46,13 @@ body {margin: 0;}
     display: flex;
     }
 
-.item:nth-child(5){  /* 과목 선택란 */
+.item:nth-child(4){  /* form 태그 */
     grid-column: 1 /4;
-    grid-row: 3/4;
+    grid-row: 3/5;
     background-color: #eceef2;
     padding: 15px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
     }
 
-.item:nth-child(6){  /* 필기업로드란 */ 
-    grid-column: 1 /4;
-    grid-row: 4/5;
-    background-color: #eceef2;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    }
 
 input[id="menuicon"] {display:none;}
 input[id="menuicon"] + label {display:block;margin:0px;width:35px;height:25px;position:relative;cursor:pointer;}

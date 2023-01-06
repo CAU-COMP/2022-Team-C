@@ -10,21 +10,24 @@ body {margin: 0;}
 }
 
 .item:nth-child(1){
+    grid-column: 1 /3;
+    grid-row: 1/2;
     background-color: rgb(21, 74, 153);
     padding: 15px;
-    justify-content: flex-end;
-    align-items: center;
+    text-align: center;
     display: flex;
-    }
-    
-.item:nth-child(2){
-    background-color: rgb(21, 74, 153);
-    padding: 15px;
-    display: flex;
-    align-items: center;
     }
 
-.item:nth-child(3){  
+.icon_search{
+    display: flex;
+    align-items: center;
+}
+
+.search_btn{
+    margin-left: 20px;
+}
+
+.item:nth-child(2){  
     background-color: rgb(21, 74, 153);
     padding: 15px;
     justify-content: flex-end;

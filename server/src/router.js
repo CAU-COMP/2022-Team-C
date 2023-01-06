@@ -32,13 +32,20 @@ module.exports = function (app) {
     app.get("/field", user.getUpload);
     app.post("/field", upload.single('file'), user.uploadNote);
 
+    app.get("/notes/:noteId", user.getNote); 
+    app.get("/myField", user.getMyField);
+
+    app.get("/search", user.getSearch);
+    app.post("/search", user.keyWord);
+
     app.get("/myInfo", user.getMyInfo);                 // 수정 필요
 
-    app.get("/myField", user.getMyField);
+    
+
 
 
     app.get("/test", user.getMain);  
-    app.get("/notes/:noteId", user.getNote); 
+    
 
 
 
