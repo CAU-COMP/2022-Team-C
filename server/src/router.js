@@ -19,6 +19,10 @@ module.exports = function (app) {
         res.render("main/main.ejs");
     });
 
+
+    app.get("/test", user.getMain);  
+
+
     app.get("/signUp", function (req, res) {
         res.render("sign/signUp.ejs");
     });
@@ -38,13 +42,18 @@ module.exports = function (app) {
     app.get("/search", user.getSearch);
     app.post("/search", user.keyWord);
 
+    app.get("/changeInfo", user.getChangeInfo);
+    //app.patch("/changeInfo", user.patchInfo);
+
+
+
     app.get("/myInfo", user.getMyInfo);                 // 수정 필요
 
     
 
 
 
-    app.get("/test", user.getMain);  
+    
     
 
 

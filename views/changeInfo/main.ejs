@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>필드 : 검색 결과</title>
+    <title>필드 : 회원정보 수정</title>
     <link rel="stylesheet" href="./layout.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./box.css">
@@ -50,32 +50,38 @@
                 </div>
             </div>
         </div>
-        <div class="item">
-            <div id="main_box">
-                <div id="keyword_box">
-                    <p id="search_keyword">
-                        <strong id="keyword">
-                            "<%= keyword %>" 
-                        </strong>
-                        (으)로 검색한 결과입니다.
-                    </p>
-                </div>
-                <div id="result_box">
-                    <% if(result) { %>
-                        <% for(var i=0; i < result.length; i++){ %>
-                            <div id="content_box" onclick="location.href='/notes/<%= result[i].id %>'">
-                                <p id="title_text">
-                                    <%= result[i].name %>님의 <%= result[i].course %> 필기
-                                </p>
-                                <p id="summary_text">
-                                    <%= result[i].explanation %>
-                                </p>
-                            </div>
-                        <% } %>
-                    <% } %>
+        <div class="item"> </div>
+        <form class= "item" action="/field" method="POST" id="info">
+            <div id="search_lecture_box">
+                <p id="title">회원정보 수정</p>
+            </div>
+            <div id="upload_box">
+                <div id="big_box">
+                    <p id="upload_text"># 수정할 정보 입력</p>
+                    <div id="sub_info_box">
+                        <div id="sub_info">
+                            <p>아이디</p>
+                            <p id="fix"><strong><%= user.id %></strong></p>
+                        </div>
+                        <div id="sub_info">
+                            <p>비밀번호</p>
+                            <input type="password">
+                        </div>
+                        <div id="sub_info">
+                            <p>닉네임</p>
+                            <input type="text" id="info_nickname" placeholder="<%= user.name %>" onfocus="this.placeholder=''"
+                                onblur="this.placeholder='<%= user.name %>'">
+                        </div>
+                        <div id="sub_info">
+                            <p>이메일</p>
+                            <input type="text" id=id="info_email" placeholder="ex) chuanguniv@naver.com"
+                                onfocus="this.placeholder=''" onblur="this.placeholder='ex) chuanguniv@naver.com'">
+                        </div>
+                    </div>
+                    <button id="submit_btn">수정하기</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>

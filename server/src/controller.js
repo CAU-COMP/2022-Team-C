@@ -3,10 +3,10 @@ const provider = require("./provider");
 const service = require("./service");
 
 exports.getUpload = async function (req, res) {
-
-    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+    
     if (!req.session.name)
         return res.redirect("/");
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
 
     const course = await provider.retrieveCourse();
 
@@ -15,10 +15,10 @@ exports.getUpload = async function (req, res) {
 
 exports.getNote = async function (req, res) {
     const noteId = req.params.noteId;
-
-    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+    
     if (!req.session.name)
         return res.redirect("/");
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
 
     const noteByNoteId = await provider.retrieveNote(noteId);               // 좌측
     if (!noteByNoteId)
@@ -31,10 +31,10 @@ exports.getNote = async function (req, res) {
 }
 
 exports.getMain = async function (req, res) {
-
-    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
     if (!req.session.name)
         return res.redirect("/");
+
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
 
     const newNote = await provider.retrieveNewNote(req.session.userId);             // 내 과목 새 필드
     const popularNote = await provider.retrievepopularNote();                       // 인기 필드
@@ -43,10 +43,10 @@ exports.getMain = async function (req, res) {
 }
 
 exports.getMyField = async function (req, res) {
-    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
     if (!req.session.name)
         return res.redirect("/");
-
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+    
     const myNote = await provider.retrieveMyNote(req.session.userId);       // 내 필기 가져오기
 
     return res.render("myField/main.ejs", { 'user': userData, 'myNote': myNote });
@@ -93,14 +93,28 @@ exports.keyWord = async function (req, res) {
     return res.redirect("/search?key=" + keyword);
 }
 
+exports.getChangeInfo = async function (req, res) {      
+    if (!req.session.name)
+        return res.redirect("/");
+    // 이메일 가져와서 userData에 추가
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point, 'id': req.session.userId };
+    
+
+        //내가 작성한 필드, 내 필드 평점 / 좋아요 표시한 필드 / 새 리뷰 가져오기
+
+    return res.render("changeInfo/main.ejs", { 'user': userData });
+}
+
 
 
 
 exports.getMyInfo = async function (req, res) {                                             ///// 마이페이지 수정 필요
-    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
     if (!req.session.name)
         return res.redirect("/");
+    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
+    
 
+        //내가 작성한 필드, 내 필드 평점 / 좋아요 표시한 필드 / 새 리뷰 가져오기
    
 
     return res.render("myPage/main.ejs", { 'user': userData });
