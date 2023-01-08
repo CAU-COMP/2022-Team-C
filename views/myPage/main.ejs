@@ -13,14 +13,14 @@
 
 <body>
     <div class="container"> <!--<input id="search" type="text" name="keyword"/>-->
-        <form action="/search" method="POST">
-            <div class="item">&nbsp&nbsp
+        <form class=item action="/search" method="POST">
+            <div class="icon_search">&nbsp&nbsp
                 <a href="/test"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="/field"><img src="../memberMain/image/plus.png" alt="plus" width="25" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text" name="keyword" />
             </div>
-            <div class="item"> <input id="search_button" type="submit" value="search" /></div>
+            <div class="search_btn"> <input id="search_button" type="submit" value="search" /></div>
         </form>
 
         <div class="item">
@@ -43,7 +43,7 @@
                     </div>
                     <div id="profile_point">보유 포인트 : <%= user.point %> P</div>
                     <div id="sidebar_btn_group">
-                        <button id="sidebar_btn1">회원정보 수정</button><br>
+                        <button id="sidebar_btn1" onclick="location.href='/changeInfo'">회원정보 수정</button><br>
                         <button id="sidebar_btn2" onclick="location.href='/myInfo'">마이페이지</button><br>
                         <button id="sidebar_btn3" onclick="location.href='/myField'">내 필드 관리</button><br>
                         <button id="sidebar_btn4" onclick="location.href='/logout'">로그아웃</button>
@@ -51,48 +51,55 @@
                 </div>
             </div>
         </div>
-        <div class="item" id="mp">&nbsp;&nbsp;&nbsp;&nbsp;마이페이지</div>
-        <div class="item" id="nf">
-            <p>새 필기 보기</p>
+        <div class="item"> <!--마이페이지-->
+            <div id="title_box">
+                <p>마이페이지</p>
+            </div>
         </div>
-        <div class="item"></div>
-        <div class="item">
-            <div id="my_box">
-                <div id="B1"></div>
-                <div id="B2">내 이미지 수정하기 &nbsp; &nbsp; 새소식&nbsp; &nbsp;</div>
-                <div id="B3">
-                    <div class="my_img_box" style="background: #BDBDBD;">
-                        <img class="profile_img" src="./profile/<%= user.profile %>">
+        <div class="item"> <!--프로필-->
+            <div id="profile_box">
+                <div id="img_group">
+                    <div id="img_box">
+                        <img id="user_img" src="./upload/user_image/동글이.jpg">
+                    </div>
+                    <p id="text1">프로필 사진 바꾸기</p>
+                </div>
+                <div id="info_box">
+                    <p id="text2"><strong>내 포인트 </strong>:&nbsp;&nbsp;<%= user.point %> P</p>
+                    <p id="text2"><strong>내가 작성한 필드 </strong>:&nbsp;&nbsp;4 개</p>
+                    <p id="text2"><strong>내 필드 평점 </strong>:&nbsp;&nbsp;4.5 점</p>
+                    <div id="profile_bnt_group">
+                        <button id="profile_btn" onclick="location.href='/changeInfo'">회원정보 수정</button>
+                        <button id="profile_btn" onclick="location.href='/myfield'">내 필드 관리</button>
+                        <button id="profile_btn">구매 필드 관리</button>
+                        <button id="profile_btn">포인트 구매</button>
                     </div>
                 </div>
-                <div id="B4">
-                    <p>내 필기 평점:</p>
-                    <p>내 필기 수</p>
-                    <P>임시 저장한 필기 수</P>
+            </div>
+        </div>
+        <div class="item"> <!--새 필기 보기-->
+            <div id="new_box">
+                <div id="text_box">
+                    <p id="text3">좋아요 표시한 필드</p>
+                    <p id="text4">필드 1</p>
+                    <p id="text4">필드 2</p>
+                    <p id="text4">필드 3</p>
+                    <p id="text4">필드 4</p>
+                    <p id="text5">더보기</p>
                 </div>
             </div>
         </div>
-        <div class="item">
-            <div id="my_field_box">
-                <div id="my_field">필기1</div>
-                <div id="my_field">필기2</div>
-                <div id="my_field">필기3</div>
-                <P style="font-size:10px; text-align:right;">더 보기&nbsp;&nbsp;&nbsp;&nbsp;</P>
-            </div>
-        </div>
-        <div class="item"></div>
-        <div class="item">
-            <div id="hidden_box">
-                <p>&nbsp;&nbsp;새 댓글</p>
-                <div id="comment_box">
-                    <div id="comment"></div>
-                    <div id="comment"></div>
-                    <div id="comment"></div>
+        <div class="item"> <!--새 리뷰-->
+            <div id="reveiw_box">
+                <div id="review_text_box">
+                    <p id="text3">새 리뷰</p>
+                    <p id="text4">리뷰1</p>
+                    <p id="text4">리뷰2</p>
+                    <p id="text4">리뷰3</p>
+                    <p id="text4">리뷰4</p>
                 </div>
             </div>
         </div>
-        <div class="item"></div>
-        <div class="item"></div>
     </div>
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>

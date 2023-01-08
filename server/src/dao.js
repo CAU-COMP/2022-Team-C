@@ -130,19 +130,6 @@ async function selectCourseID(connection, course_name) {
     return courseIdInfo;
 }
 
-
-/*
-SELECT id,p_name 
-FROM member 
-WHERE p_name LIKE '%프린터%'
-
-id varchar(12) PK 
-course_id int 
-year int 
-semester int 
-instructor_name varchar(30)
-*/
-
 // 검색 결과 조회
 async function selectSearch(connection, keyword) {          // 사용자 이름, 과목 이름, 필기 설명
     const searchQuery = `
