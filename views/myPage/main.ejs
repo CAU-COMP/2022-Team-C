@@ -15,7 +15,7 @@
     <div class="container"> <!--<input id="search" type="text" name="keyword"/>-->
         <form class=item action="/search" method="POST">
             <div class="icon_search">&nbsp&nbsp
-                <a href="/test"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
+                <a href="/main"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="/field"><img src="../memberMain/image/plus.png" alt="plus" width="25" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text" name="keyword" />
@@ -60,15 +60,15 @@
             <div id="profile_box">
                 <div id="img_group">
                     <div id="img_box">
-                        <img id="user_img" src="./upload/user_image/동글이.jpg">
+                        <img class="profile_img" src="./profile/<%= user.profile %>">
                     </div>
                     <p id="text1">프로필 사진 바꾸기</p>
                 </div>
                 <div id="info_box">
                     <p id="text2"><strong>내 포인트 </strong>:&nbsp;&nbsp;<%= user.point %> P</p>
-                    <p id="text2"><strong>내가 작성한 필드 </strong>:&nbsp;&nbsp;4 개</p>
-                    <p id="text2"><strong>내 필드 평점 </strong>:&nbsp;&nbsp;4.5 점</p>
-                    <div id="profile_bnt_group">
+                    <p id="text2"><strong>내가 작성한 필드 </strong>:&nbsp;&nbsp;<%= count %> 개</p>
+                    <p id="text2"><strong>내 필드 평점 </strong>:&nbsp;&nbsp;<%= parseFloat(rating).toFixed(2); %> 점</p>
+                    <div id="profile_btn_group">
                         <button id="profile_btn" onclick="location.href='/changeInfo'">회원정보 수정</button>
                         <button id="profile_btn" onclick="location.href='/myfield'">내 필드 관리</button>
                         <button id="profile_btn">구매 필드 관리</button>
@@ -81,10 +81,12 @@
             <div id="new_box">
                 <div id="text_box">
                     <p id="text3">좋아요 표시한 필드</p>
-                    <p id="text4">필드 1</p>
-                    <p id="text4">필드 2</p>
-                    <p id="text4">필드 3</p>
-                    <p id="text4">필드 4</p>
+                    <% for(var i = 0; i < 4; i++){ %>
+                        <% if (!like[i]) { %>
+                            <%break;%>
+                        <% } %>
+                        <p id="text4" onclick="location.href='/notes/<%= like[i].id %>'"><%= like[i].name %> :&nbsp;&nbsp;<%= like[i].course %></p>
+                    <% } %>
                     <p id="text5">더보기</p>
                 </div>
             </div>
@@ -93,10 +95,12 @@
             <div id="reveiw_box">
                 <div id="review_text_box">
                     <p id="text3">새 리뷰</p>
-                    <p id="text4">리뷰1</p>
-                    <p id="text4">리뷰2</p>
-                    <p id="text4">리뷰3</p>
-                    <p id="text4">리뷰4</p>
+                    <% for(var i = 0; i < 4; i++){ %>
+                        <% if (!review[i]) { %>
+                            <%break;%>
+                        <% } %>
+                        <p id="text4" onclick="location.href='/notes/<%= review[i].id %>'"><%= review[i].course %> :&nbsp;&nbsp;<%= review[i].comment %></p>
+                    <% } %>
                 </div>
             </div>
         </div>

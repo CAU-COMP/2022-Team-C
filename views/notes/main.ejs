@@ -14,7 +14,7 @@
     <div class="container">
         <form class=item action="/search" method="POST">
             <div class="icon_search">&nbsp&nbsp
-                <a href="/test"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
+                <a href="/main"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="/field"><img src="../memberMain/image/plus.png" alt="plus" width="25" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text" name="keyword" />
@@ -52,8 +52,7 @@
                 <img id="preview_img" src="./image/preview.png">
             </div>   
             <div id="box2">
-                <br/>
-                
+                <br/>            
                 &nbsp;&nbsp;- <strong>과목 코드</strong> : &nbsp;<%= note.course_id %> <br/>
                 &nbsp;&nbsp;- <strong>교수명</strong> : &nbsp;<%= note.instructor_name %> <br/>
                 &nbsp;&nbsp;- <strong>학기 / 구분</strong> : &nbsp;<%= note.year %>-<%= note.semester %> / <%= note.classification %> <br/>
@@ -78,7 +77,12 @@
                 <% } %>
 
                 <div id="space2">
-                    <p>필기 평점: <%= avg.toFixed(2); %></p> <button id="get_button">리뷰쓰기</button>
+                    <p>필기 평점: <%= avg.toFixed(2); %></p> 
+                    <form action="/notes/<%= note.id %>" method="post" name="comment">
+                        <textarea id="my_comment" name="newC"></textarea>
+                     </form>
+                     <p> </p>
+                    <button id="get_button">리뷰쓰기</button>
                 </div>
                 
                 <div id="space3">
