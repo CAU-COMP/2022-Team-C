@@ -15,7 +15,7 @@
     <div class="container">
         <form class=item action="/search" method="POST">
             <div class="icon_search">&nbsp&nbsp
-                <a href="/test"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
+                <a href="/main"><img src="../memberMain/image/home.png" alt="home" width="30" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="/field"><img src="../memberMain/image/plus.png" alt="plus" width="25" height="25"></a>
                 &nbsp;&nbsp;&nbsp;&nbsp; <input id="search" type="text" name="keyword" />
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="item"> </div>
-        <form class= "item" action="/field" method="POST" id="info">
+        <form class= "item" action="/changeInfo" method="PATCH" id="info">
             <div id="search_lecture_box">
                 <p id="title">회원정보 수정</p>
             </div>
@@ -65,17 +65,17 @@
                         </div>
                         <div id="sub_info">
                             <p>비밀번호</p>
-                            <input type="password">
+                            <p id="fix"><strong>변경 불가</strong></p>
                         </div>
                         <div id="sub_info">
                             <p>닉네임</p>
                             <input type="text" id="info_nickname" placeholder="<%= user.name %>" onfocus="this.placeholder=''"
-                                onblur="this.placeholder='<%= user.name %>'">
+                                onblur="this.placeholder='<%= user.name %>'" name="name" value="<%= user.name %>">
                         </div>
                         <div id="sub_info">
                             <p>이메일</p>
-                            <input type="text" id=id="info_email" placeholder="ex) chuanguniv@naver.com"
-                                onfocus="this.placeholder=''" onblur="this.placeholder='ex) chuanguniv@naver.com'">
+                            <input type="text" id=id="info_email" placeholder="<%= user.email %>"
+                                onfocus="this.placeholder=''" onblur="this.placeholder='<%= user.email %>'" name="email" value="<%= user.email %>">
                         </div>
                     </div>
                     <button id="submit_btn">수정하기</button>

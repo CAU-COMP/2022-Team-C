@@ -141,3 +141,13 @@ outline: 0;
     color: black;
     font-weight: bold;
 }
+
+#my_comment{
+    height: 100px;
+    width: 280px;
+    font-size: 18px;
+    font-weight: 400;
+    border: 3px solid rgb(21, 74, 153);
+    border-radius: 30px;
+    padding:10px;
+}

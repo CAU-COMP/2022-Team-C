@@ -1,4 +1,3 @@
-// 받은 데이터가 유효한지 확인
 const provider = require("./provider");
 const service = require("./service");
 
@@ -22,7 +21,7 @@ exports.getNote = async function (req, res) {
 
     const noteByNoteId = await provider.retrieveNote(noteId);               // 좌측
     if (!noteByNoteId)
-        return res.redirect("/test");
+        return res.redirect("/main");
 
     const reviewByNoteId = await provider.retrieveReview(noteId);           // 우측
     const hits = await service.updateHits(noteId);                      // 조회수 증가
@@ -82,9 +81,8 @@ exports.getSearch = async function (req, res) {
 
 exports.keyWord = async function (req, res) {
 
-    if(!req.body){
+    if(!req.body)
         return res.redirect("/search?key=" +"");
-    }
 
     const { keyword } = req.body;
     if(keyword == undefined)
@@ -96,39 +94,43 @@ exports.keyWord = async function (req, res) {
 exports.getChangeInfo = async function (req, res) {      
     if (!req.session.name)
         return res.redirect("/");
-    // 이메일 가져와서 userData에 추가
-    const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point, 'id': req.session.userId };
+
+    if(!req.query.name){
+        const email = await provider.retrieveEmail(req.session.userId);
+        const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point, 'id': req.session.userId, 'email': email };
     
+        return res.render("changeInfo/main.ejs", { 'user': userData });
+    }
+    else {
+        const { name, email } = req.query;
 
-        //내가 작성한 필드, 내 필드 평점 / 좋아요 표시한 필드 / 새 리뷰 가져오기
+        const updateInfo = await service.updateInfo(req.session.userId, name, email);
 
-    return res.render("changeInfo/main.ejs", { 'user': userData });
+        req.session.name = name;
+        return res.redirect("/main");
+    }
 }
-
-
-
 
 exports.getMyInfo = async function (req, res) {                                             ///// 마이페이지 수정 필요
     if (!req.session.name)
         return res.redirect("/");
     const userData = { 'name': req.session.name, 'profile': req.session.profile, 'point': req.session.point };
     
+    const myNoteReview = await provider.retrieveMyReview(req.session.userId);   // 내 필드 리뷰
+    const myNoteRating = await provider.retrieveRating(req.session.userId);     // 내 필드 평점 평균
+    const myNoteCount = await provider.retrieveMyNote(req.session.userId);      // 내가 작성한 필드
+    const likeNote = await provider.retrieveLikeNote(req.session.userId);       //좋아요 표시한 필드 
 
-        //내가 작성한 필드, 내 필드 평점 / 좋아요 표시한 필드 / 새 리뷰 가져오기
-   
-
-    return res.render("myPage/main.ejs", { 'user': userData });
-    
+    return res.render("myPage/main.ejs", { 'user': userData, 'review': myNoteReview, 'rating': myNoteRating, 
+        'count':myNoteCount.length, 'like':likeNote });
 }
-
-
 
 exports.getSignIn = async function (req, res) {
 
     if (!req.session.name)
         return res.render("sign/signIn.ejs");
     else
-        return res.redirect("/test");
+        return res.redirect("/main");
 }
 
 exports.signIn = async function (req, res) {
@@ -148,7 +150,7 @@ exports.signIn = async function (req, res) {
         req.session.profile = signInService[0].profile;
         req.session.point = signInService[0].point;
 
-        return res.redirect("/test");
+        return res.redirect("/main");
     }
 }
 
@@ -208,7 +210,7 @@ exports.uploadNote = async function (req, res) {
     if (!uploadService)
         return res.redirect("/field");
 
-    return res.redirect("/test");
+    return res.redirect("/main");
 }
 
 exports.logout = async function (req, res) {
@@ -221,14 +223,3 @@ exports.logout = async function (req, res) {
         })
     }
 }
-
-
-
-
-/*
-'cau2023', 'password456', 'cau2023@cau.ac.kr', '김1', '전자전기공학부', '15'
-'comp1234', 'helloworld12', 'comp1234@cau.ac.kr', '고', '경제학부', '30'
-'gominzip', 'mypw789', 'gominzip@cau.ac.kr', '김2', '경영학부', '25'
-'hnnynh', 'pwpw2023', 'hnnynh@cau.ac.kr', '한', '소프트웨어학부', '35'
-'puang2', 'abcd1234', 'puang2@cau.ac.kr', '콤', '간호학과', '10'
-*/

@@ -1,10 +1,8 @@
-// DB read 이외 나머지 로직 처리
 const { pool } = require("../config/database");
 const provider = require("./provider");
 const dao = require("./dao");
 
 const crypto = require("crypto");
-const {connect} = require("http2");
 
 
 exports.createUser = async function (id, pw, email, name, dept) {
@@ -66,6 +64,19 @@ exports.updateHits = async function(noteId){
         connection.release();
 
         return updateHitsResult;
+        
+    } catch(err){
+        console.log(err.massage);
+    }
+}
+
+exports.updateInfo = async function(userId, name, email){
+    try{
+        const connection = await pool.getConnection(async (conn) => conn);
+        const updateInfoResult = await dao.updateMyInfo(connection, userId, name, email);
+        connection.release();
+
+        return updateInfoResult;
         
     } catch(err){
         console.log(err.massage);

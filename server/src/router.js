@@ -1,5 +1,3 @@
-// 외부 요청을 받아서 컨트롤러로 연결 (API 선언)
-
 module.exports = function (app) {
     const user = require("./controller");
     const multer = require("multer");
@@ -19,9 +17,7 @@ module.exports = function (app) {
         res.render("main/main.ejs");
     });
 
-
-    app.get("/test", user.getMain);  
-
+    app.get("/main", user.getMain);  
 
     app.get("/signUp", function (req, res) {
         res.render("sign/signUp.ejs");
@@ -37,25 +33,14 @@ module.exports = function (app) {
     app.post("/field", upload.single('file'), user.uploadNote);
 
     app.get("/notes/:noteId", user.getNote); 
+//  app.post("/notes/:noteId", user.postComment);               // 리뷰 등록
+
     app.get("/myField", user.getMyField);
 
     app.get("/search", user.getSearch);
     app.post("/search", user.keyWord);
 
-    app.get("/changeInfo", user.getChangeInfo);
-    //app.patch("/changeInfo", user.patchInfo);
-
-
-
-    app.get("/myInfo", user.getMyInfo);                 // 수정 필요
-
-    
-
-
-
-    
-    
-
-
+    app.get("/changeInfo", user.getChangeInfo);                 // 회원정보 수정 추가
+    app.get("/myInfo", user.getMyInfo); 
 
 }

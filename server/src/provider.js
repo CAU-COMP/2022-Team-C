@@ -1,4 +1,3 @@
-// DB read 로직 처리
 const { pool } = require("../config/database");
 const dao = require("./dao");
 
@@ -56,6 +55,15 @@ exports.retrieveMyNote = async function(userId){
     return myNoteInfo;
 }
 
+exports.retrieveLikeNote = async function(userId){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const likeNote = await dao.selectLikeNote(connection, userId);
+    
+    connection.release();
+
+    return likeNote;
+}
+
 exports.retrieveReview = async function(noteId){
     const connection = await pool.getConnection(async (conn) => conn);
     const reviewInfo = await dao.selectReview(connection, noteId);
@@ -72,6 +80,31 @@ exports.retrieveSearch = async function (keyword) {
   
     return searchResult;
 };
+
+exports.retrieveEmail = async function (userId) {
+    const connection = await pool.getConnection(async (conn) => conn);
+    const emailResult = await dao.selectUserEmail(connection, userId);
+    connection.release();
+    
+    return emailResult[0].email;
+};
+
+exports.retrieveMyReview = async function(userId){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const myReviewResult = await dao.selectMyNoteReview(connection, userId);
+    connection.release();
+    
+    return myReviewResult;
+};
+
+exports.retrieveRating = async function(userId){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const ratingResult = await dao.selectMyNoteRating(connection, userId);
+    connection.release();
+
+    return ratingResult[0].avg;
+};
+
   
 exports.idCheck = async function (userId) {
     const connection = await pool.getConnection(async (conn) => conn);
